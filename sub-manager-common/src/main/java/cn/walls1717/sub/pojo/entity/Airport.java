@@ -1,16 +1,19 @@
 package cn.walls1717.sub.pojo.entity;
 
+import java.time.LocalDate;
 import java.util.List;
 
-import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,24 +24,28 @@ import lombok.Setter;
 @Getter
 @Entity
 @Table(name = "airport")
-@Schema(description = "机场")
+@ApiModel("机场")
 public class Airport {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	@Schema(description = "ID")
+	@ApiModelProperty("ID")
 	private Long id;
 
 	@Column(name = "name", nullable = false, length = 30)
-	@Schema(description = "机场名称")
+	@ApiModelProperty("机场名称")
 	private String name;
 
 	@Column(name = "url")
-	@Schema(description = "机场地址")
+	@ApiModelProperty("机场地址")
 	private String url;
 
+    @Column
+    @ApiModelProperty("创建日期")
+    private LocalDate createDate;
+
 	@OneToMany(mappedBy = "airport", cascade = CascadeType.REMOVE, orphanRemoval = true)
-	@Schema(description = "机场账号")
+	@ApiModelProperty("机场账号")
 	private List<AirportAccount> airportAccounts;
 }

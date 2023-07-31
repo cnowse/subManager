@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import cn.dev33.satoken.annotation.SaIgnore;
 import cn.walls1717.sub.pojo.dto.AdminSaveDTO;
 import cn.walls1717.sub.service.AdminService;
-import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
  *
  * @author Jeong Geol
  */
-@Tag(name = "管理员接口")
+@Api(tags = "管理员接口")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("admin")

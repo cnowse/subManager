@@ -8,6 +8,8 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+    database: mysql
+
 sa-token:
   # token 名称（同时也是 cookie 名称）
   token-name: token
